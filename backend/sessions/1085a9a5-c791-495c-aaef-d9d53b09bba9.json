@@ -1,0 +1,428 @@
+{
+  "session_id": "1085a9a5-c791-495c-aaef-d9d53b09bba9",
+  "files": [
+    {
+      "filename": "apex_recruiter_spec.txt",
+      "size": 737
+    }
+  ],
+  "raw_text": "Project Apex Recruiter System Overview:\nOur organization is introducing an automated resume screening software called Apex Recruiter. The system reads applicant resumes, extracts personal data, educational history, work experience, and skills. It runs a deep neural network classifier trained on past successful employees to rank and score applicants between 0 and 100.\nHR recruiters will use this score to select candidates for initial interview screens. The software is hosted on local servers in Helsinki, Finland. It integrates a third-party LLM via API to draft rejection emails automatically based on skills gaps. A senior HR manager supervises the system but rarely overrides candidate rankings, which are processed automatically.",
+  "assessment": {
+    "summary": "Project Apex Recruiter is an automated resume screening system designed to streamline the hiring process. By utilizing a deep neural network classifier, the system parses applicant data—including personal information, education, work history, and skills—to generate a numerical score (0-100) that ranks candidates based on historical success metrics.\n\nHosted on local servers in Helsinki, the system assists HR recruiters in identifying candidates for interviews. Furthermore, it incorporates a third-party Large Language Model (LLM) to automatically generate rejection emails based on identified skill gaps. While a senior HR manager holds supervisory authority, the ranking process is largely automated, with manual overrides occurring infrequently.",
+    "extracted_facts": {
+      "purpose": "To automate the screening, ranking, and scoring of job applicant resumes, and to facilitate communication with unsuccessful candidates.",
+      "users": "HR recruiters and senior HR managers.",
+      "affected_persons": "Job applicants applying for positions within the organization.",
+      "sector": "Employment",
+      "input_data": "Applicant resumes containing personal data, educational history, work experience, and skills.",
+      "outputs": "Numerical scores (0-100) for candidates and AI-generated rejection emails.",
+      "automation_level": "Human-on-the-loop supervision; ranking is processed automatically with rare manual intervention.",
+      "human_oversight": "Senior HR manager supervision, though the documentation notes that manual overrides are rare.",
+      "deployment_context": "On-premises servers in Helsinki, Finland.",
+      "use_of_generative_ai": "Yes, it uses an LLM to generate text for rejection emails.",
+      "use_of_gpai": "Yes, it integrates a third-party LLM via API.",
+      "impact_on_people": "The system directly influences employment opportunities by filtering and ranking candidates, which may impact livelihood and career progression."
+    },
+    "is_ai_system": {
+      "qualifies": true,
+      "reasoning": "The system processes resume data via machine learning models (inference) to rank candidates and uses a Generative AI LLM to synthesize rejection emails, thereby generating content and recommendations that influence virtual environments. It operates with a degree of autonomy in its scoring logic rather than relying exclusively on hard-coded, deterministic, rule-based programming.",
+      "citations": [
+        "Article 3(1) - Definition of an AI System"
+      ]
+    },
+    "risk_classification": {
+      "tier": "High Risk",
+      "reasoning": "The system is explicitly categorized as High-Risk under Annex III, point 4(a), as it is intended to be used for the recruitment and selection of natural persons, specifically for sorting and ranking job applicants. Such systems pose significant risks to fundamental rights in the employment lifecycle.",
+      "citations": [
+        "Article 6 - Classification Rules for High-Risk AI Systems",
+        "Annex III - Standalone High-Risk"
+      ]
+    },
+    "role_assessment": {
+      "role": "Deployer",
+      "reasoning": "The entity is utilizing the system under its own authority in its HR operations, as defined by Article 3(4). Depending on whether the entity developed the software internally or merely integrated a third-party GPAI, it may also be classified as a Provider if it places the system on the market; however, as described, it functions primarily as the Deployer.",
+      "citations": [
+        "Article 3 Definitions"
+      ]
+    },
+    "legal_obligations": [
+      {
+        "obligation_id": "art-9-risk-management",
+        "obligation": "Article 9 Risk Management System",
+        "scope": "Establish and document a risk management system throughout the entire lifecycle.",
+        "relevance": "Mandatory for all High-Risk AI systems to identify and mitigate risks to fundamental rights, health, and safety.",
+        "relevance_tier": "Critical",
+        "citations": [
+          "Article 9 - Risk Management System"
+        ]
+      },
+      {
+        "obligation_id": "art-29a-fria",
+        "obligation": "Article 29a Fundamental Rights Impact Assessment",
+        "scope": "Conduct a mandatory assessment of the impact on fundamental rights before deployment.",
+        "relevance": "Mandatory for deployers of high-risk AI systems in the employment sector.",
+        "relevance_tier": "Blocker",
+        "citations": [
+          "Article 29a - Fundamental Rights Impact Assessment"
+        ]
+      },
+      {
+        "obligation_id": "art-50-transparency",
+        "obligation": "Article 50 Transparency Obligations",
+        "scope": "Ensure recipients of AI-generated content are aware of the artificial nature of the content.",
+        "relevance": "Triggered by the use of an LLM to generate rejection emails to job applicants.",
+        "relevance_tier": "Critical",
+        "citations": [
+          "Article 50 - Specific Transparency and Labelling Obligations"
+        ]
+      },
+      {
+        "obligation_id": "art-14-human-oversight",
+        "obligation": "Article 14 Human Oversight",
+        "scope": "Ensure meaningful human intervention to prevent bias and ensure accountability.",
+        "relevance": "Required because 'rare manual intervention' is legally insufficient for High-Risk AI under the AI Act.",
+        "relevance_tier": "Critical",
+        "citations": [
+          "Article 14 - Human Oversight"
+        ]
+      }
+    ],
+    "governance_observations": {
+      "risk_management": "Must establish an iterative risk management process that monitors the system for discriminatory scoring outcomes.",
+      "data_governance": "Requires rigorous training and validation datasets to be free of historical hiring biases, compliant with Article 10.",
+      "documentation": "Must maintain technical documentation including the logic of the scoring algorithm and instructions for HR staff.",
+      "human_oversight": "Current oversight is 'rare'; must implement a 'Human-in-the-Loop' workflow where scores are audited before rejection decisions are finalized.",
+      "logging_and_monitoring": "Must enable automated logging of system events to ensure traceability of the decision-making process for post-market surveillance."
+    },
+    "adjacent_frameworks": {
+      "gdpr_overlap": "High risk of triggering Article 22, as the system makes decisions based solely on automated profiling affecting employment status. A mandatory DPIA (Article 35) is required due to the systemic profiling of job applicants.",
+      "finnish_context": "The Finnish Data Protection Ombudsman (Tietosuojavaltuutetun toimisto) oversees Article 22 compliance, while the Ministry of Economic Affairs and Employment (TEM) is likely to coordinate market surveillance.",
+      "european_context": "The system must be compliant with cross-border HR privacy standards typical of CNIL or other EU national data protection authorities during joint audits.",
+      "citations": [
+        "GDPR Article 22",
+        "Finnish Traficom guidelines",
+        "EU Adjacent National Surveillance"
+      ]
+    },
+    "citations": [
+      {
+        "title": "Regulation (EU) 2024/1689 (EU AI Act)",
+        "source": "Legislation",
+        "url": "http://data.europa.eu/eli/reg/2024/1689/oj",
+        "relevance_summary": "The primary legislative framework governing AI risk classification and mandatory deployer obligations."
+      },
+      {
+        "title": "GDPR (EU) 2016/679",
+        "source": "Legislation",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+        "relevance_summary": "Provides the legal basis for processing applicant data and limits on automated decision-making."
+      }
+    ],
+    "critic_summary": "The assessment correctly identifies the system as High-Risk under Annex III, point 4(a); however, it suffers from a lack of technical depth regarding the 'Provider' vs 'Deployer' classification. If the organization modified the pre-trained neural network or fine-tuned the third-party LLM, they might inadvertently trigger Provider obligations (Article 25), a nuance the analysis glosses over. The reliance on the assumption that 'rare manual intervention' is the only oversight mechanism ignores the possibility that the system design itself may be non-compliant with Article 14 by failing to provide meaningful interfaces for human control.",
+    "certainty_scores": {
+      "ai_system_definition": {
+        "score": 90,
+        "justification": "The definition is clear-cut as it uses ML models for automated decision-making and Generative AI for content creation."
+      },
+      "risk_classification": {
+        "score": 95,
+        "justification": "Classification under Annex III, 4(a) is unambiguous for recruitment/hiring systems."
+      },
+      "roles_and_obligations": {
+        "score": 50,
+        "justification": "The analysis assumes Deployer status without vetting the specific modification of the models, which could shift the role to Provider."
+      }
+    },
+    "flagged_assumptions": [
+      {
+        "assumption": "The system only performs 'ranking' and not 'final decision-making'.",
+        "risk": "If the ranking score is the de-facto determinant for rejection without actual human review, it qualifies as a fully automated decision under GDPR Art 22, potentially violating prohibition thresholds."
+      },
+      {
+        "assumption": "The LLM used for rejection emails is an off-the-shelf, non-modified component.",
+        "risk": "If the LLM has been fine-tuned or prompted with proprietary data to evaluate candidates specifically, the entity becomes a Provider of a High-Risk AI system."
+      }
+    ],
+    "information_gaps": [
+      {
+        "gap": "Technical validation of the 'manual override' feature.",
+        "impact": "Without proof of the interface, we cannot verify if the human-in-the-loop is 'meaningful' or merely a 'rubber-stamp' which would be non-compliant with Article 14."
+      },
+      {
+        "gap": "Training data provenance and bias testing documentation.",
+        "impact": "Failure to demonstrate bias mitigation makes the system non-compliant with Article 10 (Data Governance)."
+      }
+    ],
+    "expert_followup_questions": [
+      "Does the system provide the human supervisor with the 'reasons' or 'features' contributing to a low score, or is it a black-box output?",
+      "Is the LLM rejection email content reviewed by a human before dispatch, or is it sent directly to the candidate?",
+      "Has a specific technical audit been performed on the training set to identify proxy variables for protected characteristics (e.g., zip codes as proxies for ethnicity)?"
+    ],
+    "source_quality_audit": [
+      {
+        "citation": "Regulation (EU) 2024/1689 (EU AI Act)",
+        "type": "Legislation",
+        "reliability": "High",
+        "notes": "Official text used correctly."
+      },
+      {
+        "citation": "GDPR Article 22",
+        "type": "Legislation",
+        "reliability": "High",
+        "notes": "Correctly identifies the intersection with automated decision-making."
+      },
+      {
+        "citation": "Internal Project Apex documentation",
+        "type": "Upload",
+        "reliability": "Low",
+        "notes": "Unverified claims of 'rare manual intervention' are self-reported and lack technical proof."
+      }
+    ],
+    "contradictions": [],
+    "uncertainties": [
+      "The specific nature and identity of the third-party LLM provider are not specified.",
+      "There is no information regarding the data privacy safeguards or the specific training data parameters used for the neural network.",
+      "The documentation does not define the threshold or criteria by which an applicant is considered for an 'initial interview screen' versus an automated rejection."
+    ]
+  },
+  "chat_history": [
+    {
+      "role": "assistant",
+      "content": "### Initial Assessment Compiled!\nOur multi-agent system has completed the compliance audit for your use case.\n\n**Summary of findings:**\n- **AI System Qualification:** True\n- **Assessed Risk Level:** High Risk\n- **Compliance Role:** Deployer\n\nPlease review the tabs in the main workspace for a full breakdown. I am ready to answer any questions, retrieve specific texts, or update this analysis if you have new details!"
+    }
+  ],
+  "agent_logs": [
+    {
+      "agent": "Fact Extractor",
+      "status": "completed",
+      "duration": 2.32,
+      "thought": "Parsed 737 characters of use-case documentation. Successfully extracted purpose, sector, data parameters, and actors. Detected 0 discrepancies, 2 key assumptions, and 3 tech uncertainties.",
+      "output": {
+        "summary": "Project Apex Recruiter is an automated resume screening system designed to streamline the hiring process. By utilizing a deep neural network classifier, the system parses applicant data—including personal information, education, work history, and skills—to generate a numerical score (0-100) that ranks candidates based on historical success metrics.\n\nHosted on local servers in Helsinki, the system assists HR recruiters in identifying candidates for interviews. Furthermore, it incorporates a third-party Large Language Model (LLM) to automatically generate rejection emails based on identified skill gaps. While a senior HR manager holds supervisory authority, the ranking process is largely automated, with manual overrides occurring infrequently.",
+        "extracted_facts": {
+          "purpose": "To automate the screening, ranking, and scoring of job applicant resumes, and to facilitate communication with unsuccessful candidates.",
+          "users": "HR recruiters and senior HR managers.",
+          "affected_persons": "Job applicants applying for positions within the organization.",
+          "sector": "Employment",
+          "input_data": "Applicant resumes containing personal data, educational history, work experience, and skills.",
+          "outputs": "Numerical scores (0-100) for candidates and AI-generated rejection emails.",
+          "automation_level": "Human-on-the-loop supervision; ranking is processed automatically with rare manual intervention.",
+          "human_oversight": "Senior HR manager supervision, though the documentation notes that manual overrides are rare.",
+          "deployment_context": "On-premises servers in Helsinki, Finland.",
+          "use_of_generative_ai": "Yes, it uses an LLM to generate text for rejection emails.",
+          "use_of_gpai": "Yes, it integrates a third-party LLM via API.",
+          "impact_on_people": "The system directly influences employment opportunities by filtering and ranking candidates, which may impact livelihood and career progression."
+        },
+        "contradictions": [],
+        "assumptions": [
+          "It is assumed that the deep neural network classifier acts as the primary decision-making mechanism for the ranking process.",
+          "It is assumed that the 'past successful employees' data used to train the classifier is representative and free from historical bias, though this is not explicitly stated."
+        ],
+        "uncertainties": [
+          "The specific nature and identity of the third-party LLM provider are not specified.",
+          "There is no information regarding the data privacy safeguards or the specific training data parameters used for the neural network.",
+          "The documentation does not define the threshold or criteria by which an applicant is considered for an 'initial interview screen' versus an automated rejection."
+        ]
+      }
+    },
+    {
+      "agent": "Retrieval Agent",
+      "status": "completed",
+      "duration": 19.47,
+      "thought": "Formulated search strategy: '{'objective': 'Identify regulatory compliance requirements, ethical risks, and technical accountability frameworks for AI-driven recruitment systems in the EU context.', 'methodology': 'Targeted search across legal databases (EU AI Act), AI ethics research archives, and technical documentation on algorithmic bias in human resources.', 'search_queries': ['EU AI Act high-risk AI systems employment recruitment', 'algorithmic bias in automated resume screening and ranking systems', 'human-in-the-loop requirements for AI recruitment tools', 'GDPR data protection impact assessment for HR AI tools', 'transparency requirements for LLM-generated applicant rejection emails', 'risk management for third-party LLM integration in Finnish labor market', 'non-discrimination principles in AI hiring systems', 'accountability frameworks for automated hiring and firing decisions']}'. Executed 3 semantic vector search queries. Retrieved 8 authoritative EU AI Act articles, guidelines, or adjacent statutes.",
+      "output": {
+        "search_strategy": {
+          "objective": "Identify regulatory compliance requirements, ethical risks, and technical accountability frameworks for AI-driven recruitment systems in the EU context.",
+          "methodology": "Targeted search across legal databases (EU AI Act), AI ethics research archives, and technical documentation on algorithmic bias in human resources.",
+          "search_queries": [
+            "EU AI Act high-risk AI systems employment recruitment",
+            "algorithmic bias in automated resume screening and ranking systems",
+            "human-in-the-loop requirements for AI recruitment tools",
+            "GDPR data protection impact assessment for HR AI tools",
+            "transparency requirements for LLM-generated applicant rejection emails",
+            "risk management for third-party LLM integration in Finnish labor market",
+            "non-discrimination principles in AI hiring systems",
+            "accountability frameworks for automated hiring and firing decisions"
+          ]
+        },
+        "search_queries": [
+          "EU AI Act high risk Annex III",
+          "Article 5 prohibited practices",
+          "Article 50 transparency chatbot"
+        ],
+        "retrieved_references_count": 8
+      }
+    },
+    {
+      "agent": "Legal Analyst",
+      "status": "completed",
+      "duration": 72.49,
+      "thought": "Assessed AI qualification: True. Determined Risk Category: 'High Risk'. Identified compliance role as 'Deployer'. Mapped 4 active compliance obligations. Coded references with URLs.",
+      "output": {
+        "is_ai_system": {
+          "qualifies": true,
+          "reasoning": "The system processes resume data via machine learning models (inference) to rank candidates and uses a Generative AI LLM to synthesize rejection emails, thereby generating content and recommendations that influence virtual environments. It operates with a degree of autonomy in its scoring logic rather than relying exclusively on hard-coded, deterministic, rule-based programming.",
+          "citations": [
+            "Article 3(1) - Definition of an AI System"
+          ]
+        },
+        "risk_classification": {
+          "tier": "High Risk",
+          "reasoning": "The system is explicitly categorized as High-Risk under Annex III, point 4(a), as it is intended to be used for the recruitment and selection of natural persons, specifically for sorting and ranking job applicants. Such systems pose significant risks to fundamental rights in the employment lifecycle.",
+          "citations": [
+            "Article 6 - Classification Rules for High-Risk AI Systems",
+            "Annex III - Standalone High-Risk"
+          ]
+        },
+        "role_assessment": {
+          "role": "Deployer",
+          "reasoning": "The entity is utilizing the system under its own authority in its HR operations, as defined by Article 3(4). Depending on whether the entity developed the software internally or merely integrated a third-party GPAI, it may also be classified as a Provider if it places the system on the market; however, as described, it functions primarily as the Deployer.",
+          "citations": [
+            "Article 3 Definitions"
+          ]
+        },
+        "legal_obligations": [
+          {
+            "obligation_id": "art-9-risk-management",
+            "obligation": "Article 9 Risk Management System",
+            "scope": "Establish and document a risk management system throughout the entire lifecycle.",
+            "relevance": "Mandatory for all High-Risk AI systems to identify and mitigate risks to fundamental rights, health, and safety.",
+            "relevance_tier": "Critical",
+            "citations": [
+              "Article 9 - Risk Management System"
+            ]
+          },
+          {
+            "obligation_id": "art-29a-fria",
+            "obligation": "Article 29a Fundamental Rights Impact Assessment",
+            "scope": "Conduct a mandatory assessment of the impact on fundamental rights before deployment.",
+            "relevance": "Mandatory for deployers of high-risk AI systems in the employment sector.",
+            "relevance_tier": "Blocker",
+            "citations": [
+              "Article 29a - Fundamental Rights Impact Assessment"
+            ]
+          },
+          {
+            "obligation_id": "art-50-transparency",
+            "obligation": "Article 50 Transparency Obligations",
+            "scope": "Ensure recipients of AI-generated content are aware of the artificial nature of the content.",
+            "relevance": "Triggered by the use of an LLM to generate rejection emails to job applicants.",
+            "relevance_tier": "Critical",
+            "citations": [
+              "Article 50 - Specific Transparency and Labelling Obligations"
+            ]
+          },
+          {
+            "obligation_id": "art-14-human-oversight",
+            "obligation": "Article 14 Human Oversight",
+            "scope": "Ensure meaningful human intervention to prevent bias and ensure accountability.",
+            "relevance": "Required because 'rare manual intervention' is legally insufficient for High-Risk AI under the AI Act.",
+            "relevance_tier": "Critical",
+            "citations": [
+              "Article 14 - Human Oversight"
+            ]
+          }
+        ],
+        "governance_observations": {
+          "risk_management": "Must establish an iterative risk management process that monitors the system for discriminatory scoring outcomes.",
+          "data_governance": "Requires rigorous training and validation datasets to be free of historical hiring biases, compliant with Article 10.",
+          "documentation": "Must maintain technical documentation including the logic of the scoring algorithm and instructions for HR staff.",
+          "human_oversight": "Current oversight is 'rare'; must implement a 'Human-in-the-Loop' workflow where scores are audited before rejection decisions are finalized.",
+          "logging_and_monitoring": "Must enable automated logging of system events to ensure traceability of the decision-making process for post-market surveillance."
+        },
+        "adjacent_frameworks": {
+          "gdpr_overlap": "High risk of triggering Article 22, as the system makes decisions based solely on automated profiling affecting employment status. A mandatory DPIA (Article 35) is required due to the systemic profiling of job applicants.",
+          "finnish_context": "The Finnish Data Protection Ombudsman (Tietosuojavaltuutetun toimisto) oversees Article 22 compliance, while the Ministry of Economic Affairs and Employment (TEM) is likely to coordinate market surveillance.",
+          "european_context": "The system must be compliant with cross-border HR privacy standards typical of CNIL or other EU national data protection authorities during joint audits.",
+          "citations": [
+            "GDPR Article 22",
+            "Finnish Traficom guidelines",
+            "EU Adjacent National Surveillance"
+          ]
+        },
+        "citation_library": [
+          {
+            "title": "Regulation (EU) 2024/1689 (EU AI Act)",
+            "source": "Legislation",
+            "url": "http://data.europa.eu/eli/reg/2024/1689/oj",
+            "relevance_summary": "The primary legislative framework governing AI risk classification and mandatory deployer obligations."
+          },
+          {
+            "title": "GDPR (EU) 2016/679",
+            "source": "Legislation",
+            "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+            "relevance_summary": "Provides the legal basis for processing applicant data and limits on automated decision-making."
+          }
+        ]
+      }
+    },
+    {
+      "agent": "Red-Team Critic",
+      "status": "completed",
+      "duration": 4.6,
+      "thought": "Conducted rigorous skeptical audit. Assessed risk classification certainty at 95%. Flagged 2 risky assumptions and 2 missing information gaps. Formulated 3 expert follow-up questions.",
+      "output": {
+        "critic_summary": "The assessment correctly identifies the system as High-Risk under Annex III, point 4(a); however, it suffers from a lack of technical depth regarding the 'Provider' vs 'Deployer' classification. If the organization modified the pre-trained neural network or fine-tuned the third-party LLM, they might inadvertently trigger Provider obligations (Article 25), a nuance the analysis glosses over. The reliance on the assumption that 'rare manual intervention' is the only oversight mechanism ignores the possibility that the system design itself may be non-compliant with Article 14 by failing to provide meaningful interfaces for human control.",
+        "certainty_scores": {
+          "ai_system_definition": {
+            "score": 90,
+            "justification": "The definition is clear-cut as it uses ML models for automated decision-making and Generative AI for content creation."
+          },
+          "risk_classification": {
+            "score": 95,
+            "justification": "Classification under Annex III, 4(a) is unambiguous for recruitment/hiring systems."
+          },
+          "roles_and_obligations": {
+            "score": 50,
+            "justification": "The analysis assumes Deployer status without vetting the specific modification of the models, which could shift the role to Provider."
+          }
+        },
+        "flagged_assumptions": [
+          {
+            "assumption": "The system only performs 'ranking' and not 'final decision-making'.",
+            "risk": "If the ranking score is the de-facto determinant for rejection without actual human review, it qualifies as a fully automated decision under GDPR Art 22, potentially violating prohibition thresholds."
+          },
+          {
+            "assumption": "The LLM used for rejection emails is an off-the-shelf, non-modified component.",
+            "risk": "If the LLM has been fine-tuned or prompted with proprietary data to evaluate candidates specifically, the entity becomes a Provider of a High-Risk AI system."
+          }
+        ],
+        "information_gaps": [
+          {
+            "gap": "Technical validation of the 'manual override' feature.",
+            "impact": "Without proof of the interface, we cannot verify if the human-in-the-loop is 'meaningful' or merely a 'rubber-stamp' which would be non-compliant with Article 14."
+          },
+          {
+            "gap": "Training data provenance and bias testing documentation.",
+            "impact": "Failure to demonstrate bias mitigation makes the system non-compliant with Article 10 (Data Governance)."
+          }
+        ],
+        "expert_followup_questions": [
+          "Does the system provide the human supervisor with the 'reasons' or 'features' contributing to a low score, or is it a black-box output?",
+          "Is the LLM rejection email content reviewed by a human before dispatch, or is it sent directly to the candidate?",
+          "Has a specific technical audit been performed on the training set to identify proxy variables for protected characteristics (e.g., zip codes as proxies for ethnicity)?"
+        ],
+        "source_quality_audit": [
+          {
+            "citation": "Regulation (EU) 2024/1689 (EU AI Act)",
+            "type": "Legislation",
+            "reliability": "High",
+            "notes": "Official text used correctly."
+          },
+          {
+            "citation": "GDPR Article 22",
+            "type": "Legislation",
+            "reliability": "High",
+            "notes": "Correctly identifies the intersection with automated decision-making."
+          },
+          {
+            "citation": "Internal Project Apex documentation",
+            "type": "Upload",
+            "reliability": "Low",
+            "notes": "Unverified claims of 'rare manual intervention' are self-reported and lack technical proof."
+          }
+        ]
+      }
+    }
+  ]
+}

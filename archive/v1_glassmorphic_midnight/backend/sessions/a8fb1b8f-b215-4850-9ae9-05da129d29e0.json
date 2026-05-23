@@ -1,0 +1,401 @@
+{
+  "session_id": "a8fb1b8f-b215-4850-9ae9-05da129d29e0",
+  "files": [
+    {
+      "filename": "verbis_gpai_spec.txt",
+      "size": 764
+    }
+  ],
+  "raw_text": "Verbis GPAI SaaS Portal Overview:\nVerbis is launching a customer service portal for European e-commerce companies.\nThe portal integrates a general-purpose AI foundation model (GPAI), specifically a state-of-the-art Large Language Model trained with large-scale self-supervision (cumulative compute > 10^25 FLOPs) and licensed under the Verbis brand.\nThe model is integrated via API downstream to interact directly with e-commerce customers, answering shopping queries, drafting returns emails, and generating synthetic customer support responses.\nThe portal automatically marks all text outputs in a machine-readable format and declares to natural persons that they are interacting with an AI customer support bot.\nThe system does not process sensitive biometrics.",
+  "assessment": {
+    "summary": "Verbis is a SaaS-based customer service portal designed for European e-commerce companies. It utilizes a general-purpose AI (GPAI) foundation model to interact directly with consumers, handling shopping inquiries, drafting return communications, and automating support responses.\n\nThe system incorporates transparency measures by programmatically labeling its AI-generated content and notifying users that they are engaging with a bot. The system is designed to operate without the processing of sensitive biometric data.",
+    "extracted_facts": {
+      "purpose": "To automate customer service interactions for e-commerce platforms, including query resolution and email drafting.",
+      "users": "European e-commerce companies.",
+      "affected_persons": "E-commerce customers interacting with the support portal.",
+      "sector": "Retail / E-commerce.",
+      "input_data": "Customer shopping queries, transaction context, and email-related text data.",
+      "outputs": "Synthetic customer support responses, drafted emails, and query answers.",
+      "automation_level": "Automated, though the documentation does not explicitly detail the extent of human-in-the-loop validation.",
+      "human_oversight": "Not specified in the documentation.",
+      "deployment_context": "SaaS integration via API.",
+      "use_of_generative_ai": "Yes. The system generates synthetic text responses for customer support queries and email drafts.",
+      "use_of_gpai": "Yes. It integrates a GPAI foundation model (a Large Language Model with > 10^25 FLOPs).",
+      "impact_on_people": "Influences the quality and accuracy of customer support experiences and the resolution of commercial disputes."
+    },
+    "is_ai_system": {
+      "qualifies": true,
+      "reasoning": "The system utilizes a General-Purpose AI (GPAI) foundation model to generate synthetic text and automate customer service interactions. It satisfies Article 3(1) because it is machine-based, exhibits adaptiveness through natural language processing, and produces outputs (responses and email drafts) that influence customer interaction outcomes.",
+      "citations": [
+        "Article 3(1) - Definition of an AI System"
+      ]
+    },
+    "risk_classification": {
+      "tier": "Specific Transparency",
+      "reasoning": "The system functions as a conversational chatbot and generative text tool. It does not fall under the Annex III high-risk categories (e.g., it is not used for credit scoring, recruitment, or essential public services). Therefore, it is not 'High-Risk' under Article 6, but it is subject to the transparency obligations of Article 50 regarding AI-generated content and interaction disclosure.",
+      "citations": [
+        "Article 50 - Specific Transparency and Labelling Obligations",
+        "Annex III - Standalone High-Risk"
+      ]
+    },
+    "role_assessment": {
+      "role": "Provider and Deployer",
+      "reasoning": "The entity acts as a Provider by developing/integrating the AI system for e-commerce platforms and as a Deployer by providing the SaaS interface to companies who then use it to interact with their customers.",
+      "citations": [
+        "Article 3 Definitions"
+      ]
+    },
+    "legal_obligations": [
+      {
+        "obligation_id": "art-50-transparency-disclosure",
+        "obligation": "Article 50 Transparency Obligations",
+        "scope": "Informing natural persons that they are interacting with an AI system.",
+        "relevance": "Required for all systems interacting directly with natural persons (customers).",
+        "relevance_tier": "Critical",
+        "citations": [
+          "Article 50(1)"
+        ]
+      },
+      {
+        "obligation_id": "art-50-synthetic-content-marking",
+        "obligation": "Article 50 Synthetic Content Labelling",
+        "scope": "Marking AI-generated text content in a machine-readable format.",
+        "relevance": "The system generates synthetic email drafts and support responses which must be detectable as artificially generated.",
+        "relevance_tier": "Critical",
+        "citations": [
+          "Article 50(2)"
+        ]
+      },
+      {
+        "obligation_id": "chapter-v-gpai-obligations",
+        "obligation": "Chapter V GPAI Provider Obligations",
+        "scope": "Documentation of training process and compliance with Union copyright law.",
+        "relevance": "Because the use case integrates a GPAI model (> 10^25 FLOPs), the provider must manage copyright policies and provide technical documentation to downstream integrators.",
+        "relevance_tier": "Critical",
+        "citations": [
+          "Chapter V - General-Purpose AI (GPAI) Models & Obligations"
+        ]
+      }
+    ],
+    "governance_observations": {
+      "risk_management": "While not 'High-Risk' under Article 9, the provider should implement internal quality controls to prevent 'hallucinations' in customer support responses.",
+      "data_governance": "Must ensure customer data used in queries is not incorporated into the foundation model training set without GDPR-compliant legal bases (Art 6/9 GDPR).",
+      "documentation": "Must maintain technical documentation regarding the GPAI model integration and instructions for use as per Chapter V.",
+      "human_oversight": "Recommended: Establish a human-in-the-loop mechanism for sensitive email drafts to ensure legal compliance and accuracy before final transmission.",
+      "logging_and_monitoring": "Maintain logs of user-AI interactions for security auditing and to comply with potential post-market monitoring requirements."
+    },
+    "adjacent_frameworks": {
+      "gdpr_overlap": "Articles 13-14 (Transparency) and Article 22 (Automated Decision-Making) are triggered if the bot makes autonomous decisions (e.g., refund approvals). DPIA (Article 35) is recommended for processing large-scale consumer support data.",
+      "finnish_context": "If the e-commerce platform targets Finnish consumers, the Finnish Data Protection Ombudsman will oversee compliance regarding personal data privacy under the Finnish Data Protection Act.",
+      "european_context": "Adherence to C2PA standards for watermarking is expected for European market conformity as per the Draft Code of Practice.",
+      "citations": [
+        "GDPR Article 22",
+        "Finnish Data Protection Act",
+        "EU Adjacent National Surveillance"
+      ]
+    },
+    "citations": [
+      {
+        "title": "Article 50 - Specific Transparency and Labelling Obligations",
+        "source": "Legislation",
+        "url": "http://data.europa.eu/eli/reg/2024/1689/oj",
+        "relevance_summary": "Governs the mandatory disclosure of AI-generated content and chatbot interaction transparency."
+      },
+      {
+        "title": "Chapter V - General-Purpose AI (GPAI) Models",
+        "source": "Legislation",
+        "url": "http://data.europa.eu/eli/reg/2024/1689/oj",
+        "relevance_summary": "Defines obligations for foundation models based on computational power and systemic reach."
+      },
+      {
+        "title": "GDPR Article 22",
+        "source": "Legislation",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+        "relevance_summary": "Protects individuals from solely automated decisions that produce legal or significant effects."
+      }
+    ],
+    "critic_summary": "The initial assessment is dangerously optimistic in its dismissal of high-risk classification. By assuming the tool is 'merely' a customer service bot, the analysis overlooks potential high-risk categorizations under Annex III. Specifically, if the system handles 'dispute resolution' or financial refund eligibility, it may cross the threshold of systems used in administration of justice or essential private services, requiring more than just Article 50 transparency. The assessment fails to critically examine if 'drafting return communications' constitutes an automated decision with legal or significant effects, which would pivot the compliance requirement from voluntary 'best practice' to mandatory robust oversight.\n\nFurthermore, the assessment conflates the Provider and Deployer roles loosely. If 'Verbis' merely provides the API but does not control the deployment parameters, the downstream retailer may hold greater liability than acknowledged. The reliance on the system being 'GPAI-based' is used as a compliance focal point, but it lacks evidence that the underlying foundation model provider has fulfilled their own systemic risk or transparency obligations, which is a prerequisite for Verbis to be legally compliant as an integrator.",
+    "certainty_scores": {
+      "ai_system_definition": {
+        "score": 90,
+        "justification": "The definition is clear; it functions as an automated generative interface under EU AI Act definitions."
+      },
+      "risk_classification": {
+        "score": 40,
+        "justification": "The classification is premature. The analysis fails to test for 'significant effects' on individuals that might trigger High-Risk classification under Annex III for critical infrastructure or essential services."
+      },
+      "roles_and_obligations": {
+        "score": 60,
+        "justification": "The distinction between Verbis as a provider and the e-commerce client as a deployer is legally muddy; the 'Provider' definition is treated as a catch-all without sufficient scrutiny of the 'substantial modification' clause."
+      }
+    },
+    "flagged_assumptions": [
+      {
+        "assumption": "The system does not process sensitive biometric data.",
+        "risk": "If the customer support interface allows users to upload photos for returns (e.g., verifying a damaged product via facial detection or ID scan), the system could inadvertently trigger biometric-related prohibitions or high-risk requirements."
+      },
+      {
+        "assumption": "The system is not 'High-Risk' under Annex III.",
+        "risk": "If the automated support agent makes decisions on 'refunds' or 'account access' that negatively impact customers, it could be deemed an essential private service or an automated decision system with significant effects, triggering strict Art 9-15 compliance."
+      }
+    ],
+    "information_gaps": [
+      {
+        "gap": "Specifics of the decision-making logic regarding return authorizations and refunds.",
+        "impact": "If the AI has the autonomy to approve/deny financial outcomes, the system moves from a 'transparency' case to an 'automated decision' case, triggering Art 22 GDPR and potentially AI Act high-risk status."
+      },
+      {
+        "gap": "Human-in-the-loop (HITL) technical architecture.",
+        "impact": "Without knowing how a human operator can intercept or override the AI, compliance with post-market monitoring and safety obligations cannot be verified."
+      }
+    ],
+    "expert_followup_questions": [
+      "Does the system utilize a 'human-in-the-loop' mechanism for refund/return approvals, and are these interventions logged as metadata for auditability?",
+      "Does the API input field allow for the submission of images, and if so, is there an automated pipeline to redact or identify potential biometric data (PII) before it hits the foundation model?",
+      "Under what technical conditions does the system output a 'refusal' to a customer, and does this refusal logic qualify as a 'legally significant decision' under current organizational policy?",
+      "Has a conformity assessment been conducted to verify that the GPAI provider has provided the necessary technical documentation as required by Article 53?"
+    ],
+    "source_quality_audit": [
+      {
+        "citation": "EU AI Act (Regulation 2024/1689)",
+        "type": "Legislation",
+        "reliability": "High",
+        "notes": "Primary source, correctly identified; however, the interpretation of Annex III is superficial."
+      },
+      {
+        "citation": "GDPR Article 22",
+        "type": "Legislation",
+        "reliability": "High",
+        "notes": "Correctly cited, but the intersection with AI Act Article 6 (High-Risk criteria) is under-explored."
+      }
+    ],
+    "contradictions": [],
+    "uncertainties": [
+      "Lack of detail regarding specific human-in-the-loop mechanisms or quality control processes.",
+      "The physical or regional location of data storage and processing is not specified beyond 'European e-commerce companies'.",
+      "No information provided regarding safety guardrails or bias mitigation protocols."
+    ]
+  },
+  "chat_history": [
+    {
+      "role": "assistant",
+      "content": "### Initial Assessment Compiled!\nOur multi-agent system has completed the compliance audit for your use case.\n\n**Summary of findings:**\n- **AI System Qualification:** True\n- **Assessed Risk Level:** Specific Transparency\n- **Compliance Role:** Provider and Deployer\n\nPlease review the tabs in the main workspace for a full breakdown. I am ready to answer any questions, retrieve specific texts, or update this analysis if you have new details!"
+    }
+  ],
+  "agent_logs": [
+    {
+      "agent": "Fact Extractor",
+      "status": "completed",
+      "duration": 2.29,
+      "thought": "Parsed 764 characters of use-case documentation. Successfully extracted purpose, sector, data parameters, and actors. Detected 0 discrepancies, 2 key assumptions, and 3 tech uncertainties.",
+      "output": {
+        "summary": "Verbis is a SaaS-based customer service portal designed for European e-commerce companies. It utilizes a general-purpose AI (GPAI) foundation model to interact directly with consumers, handling shopping inquiries, drafting return communications, and automating support responses.\n\nThe system incorporates transparency measures by programmatically labeling its AI-generated content and notifying users that they are engaging with a bot. The system is designed to operate without the processing of sensitive biometric data.",
+        "extracted_facts": {
+          "purpose": "To automate customer service interactions for e-commerce platforms, including query resolution and email drafting.",
+          "users": "European e-commerce companies.",
+          "affected_persons": "E-commerce customers interacting with the support portal.",
+          "sector": "Retail / E-commerce.",
+          "input_data": "Customer shopping queries, transaction context, and email-related text data.",
+          "outputs": "Synthetic customer support responses, drafted emails, and query answers.",
+          "automation_level": "Automated, though the documentation does not explicitly detail the extent of human-in-the-loop validation.",
+          "human_oversight": "Not specified in the documentation.",
+          "deployment_context": "SaaS integration via API.",
+          "use_of_generative_ai": "Yes. The system generates synthetic text responses for customer support queries and email drafts.",
+          "use_of_gpai": "Yes. It integrates a GPAI foundation model (a Large Language Model with > 10^25 FLOPs).",
+          "impact_on_people": "Influences the quality and accuracy of customer support experiences and the resolution of commercial disputes."
+        },
+        "contradictions": [],
+        "assumptions": [
+          "Assumed that the 'state-of-the-art' GPAI model used is a third-party or proprietary foundation model as defined by current AI regulatory standards.",
+          "Assumed that the SaaS portal infrastructure relies on cloud-based deployment, though this is implied rather than explicitly stated."
+        ],
+        "uncertainties": [
+          "Lack of detail regarding specific human-in-the-loop mechanisms or quality control processes.",
+          "The physical or regional location of data storage and processing is not specified beyond 'European e-commerce companies'.",
+          "No information provided regarding safety guardrails or bias mitigation protocols."
+        ]
+      }
+    },
+    {
+      "agent": "Retrieval Agent",
+      "status": "completed",
+      "duration": 3.71,
+      "thought": "Formulated search strategy: 'To evaluate compliance and risk, the strategy targets EU AI Act classification (High-Risk vs. Limited Risk), transparency obligations for generative AI, and data privacy compliance for customer support systems.'. Executed 7 semantic vector search queries. Retrieved 12 authoritative EU AI Act articles, guidelines, or adjacent statutes.",
+      "output": {
+        "search_strategy": "To evaluate compliance and risk, the strategy targets EU AI Act classification (High-Risk vs. Limited Risk), transparency obligations for generative AI, and data privacy compliance for customer support systems.",
+        "search_queries": [
+          "EU AI Act classification for AI systems interacting with customers",
+          "Transparency requirements for generative AI in customer service under EU AI Act",
+          "Data privacy and GDPR implications for LLM-based customer support chatbots",
+          "Requirements for human oversight in high-risk AI systems in the EU",
+          "Liability for synthetic content generated by customer support AI systems",
+          "Technical documentation requirements for GPAI foundation models in SaaS",
+          "Risk assessment frameworks for automated customer dispute resolution AI"
+        ],
+        "retrieved_references_count": 12
+      }
+    },
+    {
+      "agent": "Legal Analyst",
+      "status": "completed",
+      "duration": 14.94,
+      "thought": "Assessed AI qualification: True. Determined Risk Category: 'Specific Transparency'. Identified compliance role as 'Provider and Deployer'. Mapped 3 active compliance obligations. Coded references with URLs.",
+      "output": {
+        "is_ai_system": {
+          "qualifies": true,
+          "reasoning": "The system utilizes a General-Purpose AI (GPAI) foundation model to generate synthetic text and automate customer service interactions. It satisfies Article 3(1) because it is machine-based, exhibits adaptiveness through natural language processing, and produces outputs (responses and email drafts) that influence customer interaction outcomes.",
+          "citations": [
+            "Article 3(1) - Definition of an AI System"
+          ]
+        },
+        "risk_classification": {
+          "tier": "Specific Transparency",
+          "reasoning": "The system functions as a conversational chatbot and generative text tool. It does not fall under the Annex III high-risk categories (e.g., it is not used for credit scoring, recruitment, or essential public services). Therefore, it is not 'High-Risk' under Article 6, but it is subject to the transparency obligations of Article 50 regarding AI-generated content and interaction disclosure.",
+          "citations": [
+            "Article 50 - Specific Transparency and Labelling Obligations",
+            "Annex III - Standalone High-Risk"
+          ]
+        },
+        "role_assessment": {
+          "role": "Provider and Deployer",
+          "reasoning": "The entity acts as a Provider by developing/integrating the AI system for e-commerce platforms and as a Deployer by providing the SaaS interface to companies who then use it to interact with their customers.",
+          "citations": [
+            "Article 3 Definitions"
+          ]
+        },
+        "legal_obligations": [
+          {
+            "obligation_id": "art-50-transparency-disclosure",
+            "obligation": "Article 50 Transparency Obligations",
+            "scope": "Informing natural persons that they are interacting with an AI system.",
+            "relevance": "Required for all systems interacting directly with natural persons (customers).",
+            "relevance_tier": "Critical",
+            "citations": [
+              "Article 50(1)"
+            ]
+          },
+          {
+            "obligation_id": "art-50-synthetic-content-marking",
+            "obligation": "Article 50 Synthetic Content Labelling",
+            "scope": "Marking AI-generated text content in a machine-readable format.",
+            "relevance": "The system generates synthetic email drafts and support responses which must be detectable as artificially generated.",
+            "relevance_tier": "Critical",
+            "citations": [
+              "Article 50(2)"
+            ]
+          },
+          {
+            "obligation_id": "chapter-v-gpai-obligations",
+            "obligation": "Chapter V GPAI Provider Obligations",
+            "scope": "Documentation of training process and compliance with Union copyright law.",
+            "relevance": "Because the use case integrates a GPAI model (> 10^25 FLOPs), the provider must manage copyright policies and provide technical documentation to downstream integrators.",
+            "relevance_tier": "Critical",
+            "citations": [
+              "Chapter V - General-Purpose AI (GPAI) Models & Obligations"
+            ]
+          }
+        ],
+        "governance_observations": {
+          "risk_management": "While not 'High-Risk' under Article 9, the provider should implement internal quality controls to prevent 'hallucinations' in customer support responses.",
+          "data_governance": "Must ensure customer data used in queries is not incorporated into the foundation model training set without GDPR-compliant legal bases (Art 6/9 GDPR).",
+          "documentation": "Must maintain technical documentation regarding the GPAI model integration and instructions for use as per Chapter V.",
+          "human_oversight": "Recommended: Establish a human-in-the-loop mechanism for sensitive email drafts to ensure legal compliance and accuracy before final transmission.",
+          "logging_and_monitoring": "Maintain logs of user-AI interactions for security auditing and to comply with potential post-market monitoring requirements."
+        },
+        "adjacent_frameworks": {
+          "gdpr_overlap": "Articles 13-14 (Transparency) and Article 22 (Automated Decision-Making) are triggered if the bot makes autonomous decisions (e.g., refund approvals). DPIA (Article 35) is recommended for processing large-scale consumer support data.",
+          "finnish_context": "If the e-commerce platform targets Finnish consumers, the Finnish Data Protection Ombudsman will oversee compliance regarding personal data privacy under the Finnish Data Protection Act.",
+          "european_context": "Adherence to C2PA standards for watermarking is expected for European market conformity as per the Draft Code of Practice.",
+          "citations": [
+            "GDPR Article 22",
+            "Finnish Data Protection Act",
+            "EU Adjacent National Surveillance"
+          ]
+        },
+        "citation_library": [
+          {
+            "title": "Article 50 - Specific Transparency and Labelling Obligations",
+            "source": "Legislation",
+            "url": "http://data.europa.eu/eli/reg/2024/1689/oj",
+            "relevance_summary": "Governs the mandatory disclosure of AI-generated content and chatbot interaction transparency."
+          },
+          {
+            "title": "Chapter V - General-Purpose AI (GPAI) Models",
+            "source": "Legislation",
+            "url": "http://data.europa.eu/eli/reg/2024/1689/oj",
+            "relevance_summary": "Defines obligations for foundation models based on computational power and systemic reach."
+          },
+          {
+            "title": "GDPR Article 22",
+            "source": "Legislation",
+            "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+            "relevance_summary": "Protects individuals from solely automated decisions that produce legal or significant effects."
+          }
+        ]
+      }
+    },
+    {
+      "agent": "Red-Team Critic",
+      "status": "completed",
+      "duration": 4.93,
+      "thought": "Conducted rigorous skeptical audit. Assessed risk classification certainty at 40%. Flagged 2 risky assumptions and 2 missing information gaps. Formulated 4 expert follow-up questions.",
+      "output": {
+        "critic_summary": "The initial assessment is dangerously optimistic in its dismissal of high-risk classification. By assuming the tool is 'merely' a customer service bot, the analysis overlooks potential high-risk categorizations under Annex III. Specifically, if the system handles 'dispute resolution' or financial refund eligibility, it may cross the threshold of systems used in administration of justice or essential private services, requiring more than just Article 50 transparency. The assessment fails to critically examine if 'drafting return communications' constitutes an automated decision with legal or significant effects, which would pivot the compliance requirement from voluntary 'best practice' to mandatory robust oversight.\n\nFurthermore, the assessment conflates the Provider and Deployer roles loosely. If 'Verbis' merely provides the API but does not control the deployment parameters, the downstream retailer may hold greater liability than acknowledged. The reliance on the system being 'GPAI-based' is used as a compliance focal point, but it lacks evidence that the underlying foundation model provider has fulfilled their own systemic risk or transparency obligations, which is a prerequisite for Verbis to be legally compliant as an integrator.",
+        "certainty_scores": {
+          "ai_system_definition": {
+            "score": 90,
+            "justification": "The definition is clear; it functions as an automated generative interface under EU AI Act definitions."
+          },
+          "risk_classification": {
+            "score": 40,
+            "justification": "The classification is premature. The analysis fails to test for 'significant effects' on individuals that might trigger High-Risk classification under Annex III for critical infrastructure or essential services."
+          },
+          "roles_and_obligations": {
+            "score": 60,
+            "justification": "The distinction between Verbis as a provider and the e-commerce client as a deployer is legally muddy; the 'Provider' definition is treated as a catch-all without sufficient scrutiny of the 'substantial modification' clause."
+          }
+        },
+        "flagged_assumptions": [
+          {
+            "assumption": "The system does not process sensitive biometric data.",
+            "risk": "If the customer support interface allows users to upload photos for returns (e.g., verifying a damaged product via facial detection or ID scan), the system could inadvertently trigger biometric-related prohibitions or high-risk requirements."
+          },
+          {
+            "assumption": "The system is not 'High-Risk' under Annex III.",
+            "risk": "If the automated support agent makes decisions on 'refunds' or 'account access' that negatively impact customers, it could be deemed an essential private service or an automated decision system with significant effects, triggering strict Art 9-15 compliance."
+          }
+        ],
+        "information_gaps": [
+          {
+            "gap": "Specifics of the decision-making logic regarding return authorizations and refunds.",
+            "impact": "If the AI has the autonomy to approve/deny financial outcomes, the system moves from a 'transparency' case to an 'automated decision' case, triggering Art 22 GDPR and potentially AI Act high-risk status."
+          },
+          {
+            "gap": "Human-in-the-loop (HITL) technical architecture.",
+            "impact": "Without knowing how a human operator can intercept or override the AI, compliance with post-market monitoring and safety obligations cannot be verified."
+          }
+        ],
+        "expert_followup_questions": [
+          "Does the system utilize a 'human-in-the-loop' mechanism for refund/return approvals, and are these interventions logged as metadata for auditability?",
+          "Does the API input field allow for the submission of images, and if so, is there an automated pipeline to redact or identify potential biometric data (PII) before it hits the foundation model?",
+          "Under what technical conditions does the system output a 'refusal' to a customer, and does this refusal logic qualify as a 'legally significant decision' under current organizational policy?",
+          "Has a conformity assessment been conducted to verify that the GPAI provider has provided the necessary technical documentation as required by Article 53?"
+        ],
+        "source_quality_audit": [
+          {
+            "citation": "EU AI Act (Regulation 2024/1689)",
+            "type": "Legislation",
+            "reliability": "High",
+            "notes": "Primary source, correctly identified; however, the interpretation of Annex III is superficial."
+          },
+          {
+            "citation": "GDPR Article 22",
+            "type": "Legislation",
+            "reliability": "High",
+            "notes": "Correctly cited, but the intersection with AI Act Article 6 (High-Risk criteria) is under-explored."
+          }
+        ]
+      }
+    }
+  ]
+}

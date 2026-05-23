@@ -1,0 +1,13 @@
+{
+  "session_id": "794a3642-b028-4661-abfa-d35c8475e52e",
+  "files": [
+    {
+      "filename": "apex_recruiter_spec.txt",
+      "size": 737
+    }
+  ],
+  "raw_text": "Project Apex Recruiter System Overview:\nOur organization is introducing an automated resume screening software called Apex Recruiter. The system reads applicant resumes, extracts personal data, educational history, work experience, and skills. It runs a deep neural network classifier trained on past successful employees to rank and score applicants between 0 and 100.\nHR recruiters will use this score to select candidates for initial interview screens. The software is hosted on local servers in Helsinki, Finland. It integrates a third-party LLM via API to draft rejection emails automatically based on skills gaps. A senior HR manager supervises the system but rarely overrides candidate rankings, which are processed automatically.",
+  "assessment": null,
+  "chat_history": [],
+  "agent_logs": []
+}
