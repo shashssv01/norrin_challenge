@@ -1,20 +1,36 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import FloatingChat from '../components/FloatingChat';
 
 export default function ClassifyPage() {
   const [description, setDescription] = useState('');
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const analyzeCompliance = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:8000/api/classify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ description })
-      });
-      const data = await res.json();
+      let data;
+      if (selectedFile) {
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+        formData.append('description', description);
+        
+        const res = await fetch('http://localhost:8000/api/classify/upload', {
+          method: 'POST',
+          body: formData
+        });
+        data = await res.json();
+      } else {
+        const res = await fetch('http://localhost:8000/api/classify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ description })
+        });
+        data = await res.json();
+      }
       setResult(data);
     } catch (e) {
       console.error(e);
@@ -71,8 +87,32 @@ export default function ClassifyPage() {
               disabled={loading}
             />
           </div>
-          <div className="flex justify-end">
-            <button onClick={analyzeCompliance} disabled={loading || !description} className="bg-primary text-on-primary px-6 py-3 rounded font-label-caps text-label-caps hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-4">
+              <input 
+                type="file" 
+                ref={fileInputRef} 
+                className="hidden" 
+                onChange={(e) => setSelectedFile(e.target.files?.[0] || null)} 
+              />
+              <button 
+                onClick={() => fileInputRef.current?.click()}
+                disabled={loading}
+                className="bg-surface-container-high text-on-surface p-3 rounded-full hover:bg-surface-container-highest transition-colors flex items-center justify-center disabled:opacity-50"
+                title="Attach Document"
+              >
+                <span className="material-symbols-outlined">attach_file</span>
+              </button>
+              {selectedFile && (
+                <div className="flex items-center gap-2 bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded text-body-sm font-medium">
+                  <span className="truncate max-w-[200px]">{selectedFile.name}</span>
+                  <button onClick={() => setSelectedFile(null)} className="hover:text-error flex items-center justify-center">
+                    <span className="material-symbols-outlined text-[16px]">close</span>
+                  </button>
+                </div>
+              )}
+            </div>
+            <button onClick={analyzeCompliance} disabled={loading || (!description && !selectedFile)} className="bg-primary text-on-primary px-6 py-3 rounded font-label-caps text-label-caps hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
               {loading && (
                 <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -152,6 +192,7 @@ export default function ClassifyPage() {
           </section>
         )}
       </main>
+      <FloatingChat />
     </div>
   );
 }
