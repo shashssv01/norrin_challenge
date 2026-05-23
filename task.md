@@ -1,0 +1,22 @@
+# Task List: Compliance Lens
+
+- `[ ]` **1. Project Initialization**
+  - `[ ]` Initialize Next.js frontend with Tailwind CSS
+  - `[ ]` Initialize FastAPI backend
+  - `[ ]` Create Python virtual environment and install requirements
+- `[ ]` **2. Backend Setup**
+  - `[ ]` Create `download_pdf.py` script to fetch the EU AI Act PDF if not present
+  - `[ ]` Create Norrin KB markdown files
+  - `[ ]` Implement `ingest_norrin.py` and `ingest_eu_act.py`
+  - `[ ]` Implement agent architecture (`orchestrator.py`, `retrieval.py`, `classifier.py`, `validator.py`)
+  - `[ ]` Implement API routes (`/api/classify`, `/api/chat`, `/api/export/{session_id}`) with resource-light execution mode
+- `[ ]` **3. Frontend Setup**
+  - `[ ]` Setup Tailwind CSS configuration and `DESIGN.md` tokens
+  - `[ ]` Build Landing Page (`app/page.tsx`)
+  - `[ ]` Build Classification App (`app/classify/page.tsx`)
+  - `[ ]` Build Delta Dashboard (`app/dashboard/page.tsx`)
+  - `[ ]` Build Chat Interface (`app/chat/page.tsx`)
+- `[ ]` **4. Integration & Testing**
+  - `[ ]` Connect frontend to backend API endpoints
+  - `[ ]` Test classification flow with a small context window to save resources
+  - `[ ]` Test Audit Trail export
