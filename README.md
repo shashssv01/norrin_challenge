@@ -39,45 +39,6 @@ To ensure high-fidelity, legally-grounded classifications without hallucinations
 
 ---
 
-## 🚀 How to Run Locally
-
-### 1. Prerequisites
-- Node.js (v18+)
-- Python (3.9+)
-- A Google AI Studio API Key (for Gemini)
-
-### 2. Backend Setup
-Navigate to the backend directory, install dependencies, and start the FastAPI server:
-
-```bash
-cd backend
-python -m venv venv
-# Windows: .\venv\Scripts\activate
-# Mac/Linux: source venv/bin/activate
-
-pip install -r requirements.txt
-
-# Configure your environment
-# Edit the .env file and add your OPENAI_API_KEY (Your Gemini API Key)
-# OPENAI_API_KEY="AIzaSy..."
-
-# Start the server
-python -m uvicorn main:app --reload --port 8000
-```
-*The API will be available at `http://localhost:8000`*
-
-### 3. Frontend Setup
-Open a new terminal window, navigate to the frontend directory, and start the Next.js dev server:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-*The web interface will be available at `http://localhost:3000`*
-
----
-
 ## 📁 Repository Structure
 
 ```
@@ -97,5 +58,45 @@ working norrin/
 └── README.md              # Project documentation
 ```
 
-## ⚖️ Disclaimer
-*Compliance Lens is an AI-powered demonstration tool. Its outputs do not constitute legal advice. All AI risk classifications must be reviewed and approved by qualified legal counsel.*
+
+## 🏗️ System Architecture
+
+```text
+User Input / Uploaded Document
+        ↓
+Next.js Frontend
+        ↓
+FastAPI Backend
+        ↓
+Orchestrator
+        ↓
+Retrieval Agent
+        ↓
+Classifier Agent
+        ↓
+Validator Agent
+        ↓
+Structured Compliance Result + Audit Export
+
+## 🧩 Backend Description
+
+The backend of **Compliance Lens** is built using **FastAPI** and acts as the main intelligence layer of the application. It receives user input from the frontend, processes uploaded documents, retrieves relevant compliance context, runs the AI classification workflow, validates the result, and returns a structured compliance assessment.
+
+The backend is not designed as a simple chatbot API. Instead, it follows a structured compliance-review process:
+
+```text
+Input
+  ↓
+FastAPI API Layer
+  ↓
+Orchestrator
+  ↓
+Retrieval Agent
+  ↓
+Classifier Agent
+  ↓
+Validator Agent
+  ↓
+Structured Output
+  ↓
+Audit Export
