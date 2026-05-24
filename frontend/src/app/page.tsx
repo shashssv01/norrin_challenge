@@ -15,6 +15,9 @@ export default function LoginPage() {
     // Mock login delay
     setTimeout(() => {
       setLoading(false);
+      // Create session
+      localStorage.setItem('session_id', crypto.randomUUID());
+      localStorage.setItem('use_case_analyzed', 'false');
       // Redirect to the dashboard
       router.push('/dashboard');
     }, 1000);

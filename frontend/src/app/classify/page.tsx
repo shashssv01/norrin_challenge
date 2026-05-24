@@ -12,8 +12,11 @@ export default function ClassifyPage() {
   const router = useRouter();
 
   const analyzeCompliance = async () => {
-    if (result) {
+    const hasAnalyzed = localStorage.getItem('use_case_analyzed');
+    if (hasAnalyzed === 'true') {
       alert("cannot use two usecases on single go");
+      localStorage.removeItem('session_id');
+      localStorage.removeItem('use_case_analyzed');
       router.push('/');
       return;
     }
@@ -39,6 +42,9 @@ export default function ClassifyPage() {
         data = await res.json();
       }
       setResult(data);
+      if (data && !data.error) {
+        localStorage.setItem('use_case_analyzed', 'true');
+      }
     } catch (e) {
       console.error(e);
     }
