@@ -5,6 +5,7 @@ import uuid
 import uvicorn
 import pdfplumber
 import io
+import time
 
 from agents.orchestrator import Orchestrator
 from export.audit_trail import build_audit_trail, export_to_json
@@ -33,7 +34,12 @@ class ChatRequest(BaseModel):
 
 @app.post("/api/classify")
 async def classify(request: ClassifyRequest):
+    t0 = time.time()
     result = await orchestrator.classify_product(request.description)
+    t_total = (time.time() - t0) * 1000
+    
+    if "metrics" in result:
+        result["metrics"]["total_ms"] = round(t_total, 2)
     
     # Store for export
     session_id = str(uuid.uuid4())
@@ -48,26 +54,34 @@ async def classify(request: ClassifyRequest):
     }
 
 @app.post("/api/classify/upload")
-async def classify_upload(file: UploadFile = File(...), description: str = Form("")):
-    content = await file.read()
+async def classify_upload(files: list[UploadFile] = File(...), description: str = Form("")):
+    t0 = time.time()
     extracted_text = ""
     
-    if file.filename.endswith(".pdf"):
-        try:
-            with pdfplumber.open(io.BytesIO(content)) as pdf:
-                for page in pdf.pages:
-                    extracted_text += page.extract_text() + "\n"
-        except Exception as e:
-            raise HTTPException(status_code=400, detail=f"Failed to parse PDF: {str(e)}")
-    else:
-        try:
-            extracted_text = content.decode("utf-8")
-        except UnicodeDecodeError:
-            raise HTTPException(status_code=400, detail="Only PDF and text files are supported.")
+    for file in files:
+        content = await file.read()
+        extracted_text += f"\n--- Document: {file.filename} ---\n"
+        if file.filename.endswith(".pdf"):
+            try:
+                with pdfplumber.open(io.BytesIO(content)) as pdf:
+                    for page in pdf.pages:
+                        extracted_text += page.extract_text() + "\n"
+            except Exception as e:
+                raise HTTPException(status_code=400, detail=f"Failed to parse PDF {file.filename}: {str(e)}")
+        else:
+            try:
+                extracted_text += content.decode("utf-8") + "\n"
+            except UnicodeDecodeError:
+                raise HTTPException(status_code=400, detail=f"Only PDF and text files are supported ({file.filename}).")
     
-    combined_description = f"User Description: {description}\n\nAttached Document Content:\n{extracted_text}"
+    t_extract = (time.time() - t0) * 1000
+    combined_description = f"User Description: {description}\n\nAttached Documents Content:\n{extracted_text}"
     
     result = await orchestrator.classify_product(combined_description)
+    
+    if "metrics" in result:
+        result["metrics"]["extraction_ms"] = round(t_extract, 2)
+        result["metrics"]["total_ms"] = round((time.time() - t0) * 1000, 2)
     
     session_id = str(uuid.uuid4())
     session_store[session_id] = {
@@ -86,24 +100,26 @@ async def chat(request: ChatRequest):
     return result
 
 @app.post("/api/chat/upload")
-async def chat_upload(file: UploadFile = File(...), question: str = Form("Analyze this document.")):
-    content = await file.read()
+async def chat_upload(files: list[UploadFile] = File(...), question: str = Form("Analyze this document.")):
     extracted_text = ""
     
-    if file.filename.endswith(".pdf"):
-        try:
-            with pdfplumber.open(io.BytesIO(content)) as pdf:
-                for page in pdf.pages:
-                    extracted_text += page.extract_text() + "\n"
-        except Exception as e:
-            raise HTTPException(status_code=400, detail=f"Failed to parse PDF: {str(e)}")
-    else:
-        try:
-            extracted_text = content.decode("utf-8")
-        except UnicodeDecodeError:
-            raise HTTPException(status_code=400, detail="Only PDF and text files are supported.")
+    for file in files:
+        content = await file.read()
+        extracted_text += f"\n--- Document: {file.filename} ---\n"
+        if file.filename.endswith(".pdf"):
+            try:
+                with pdfplumber.open(io.BytesIO(content)) as pdf:
+                    for page in pdf.pages:
+                        extracted_text += page.extract_text() + "\n"
+            except Exception as e:
+                raise HTTPException(status_code=400, detail=f"Failed to parse PDF {file.filename}: {str(e)}")
+        else:
+            try:
+                extracted_text += content.decode("utf-8") + "\n"
+            except UnicodeDecodeError:
+                raise HTTPException(status_code=400, detail=f"Only PDF and text files are supported ({file.filename}).")
     
-    combined_prompt = f"Document content:\n{extracted_text}\n\nUser Question: {question}"
+    combined_prompt = f"Documents content:\n{extracted_text}\n\nUser Question: {question}"
     result = await orchestrator.answer_question(combined_prompt)
     return result
 

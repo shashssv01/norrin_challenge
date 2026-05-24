@@ -8,13 +8,13 @@ export default function ContactPage() {
         <div className="flex items-center gap-8">
           <div className="font-headline-md text-headline-md font-bold text-primary">Compliance Lens</div>
           <div className="hidden md:flex gap-6 h-full items-center">
-            <a className="text-secondary font-body-md text-body-md hover:text-primary transition-colors" href="/">Classify</a>
+            <a className="text-secondary font-body-md text-body-md hover:text-primary transition-colors" href="/classify">Classify</a>
             <a className="text-secondary font-body-md text-body-md hover:text-primary transition-colors" href="/chat">Chat (RAG)</a>
             <a className="text-secondary font-body-md text-body-md hover:text-primary transition-colors" href="/dashboard">Delta Dashboard</a>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <a href="/contact" className="bg-primary text-on-primary font-body-sm text-body-sm px-4 py-2 rounded">Book Norrin Review</a>
+          <a href="/contact" className="bg-[#556b2f] text-white font-body-sm text-body-sm px-4 py-2 rounded">Book Norrin Review</a>
         </div>
       </nav>
 
@@ -35,7 +35,7 @@ export default function ContactPage() {
             <label className="font-label-caps text-label-caps text-secondary">AI System Summary</label>
             <textarea className="border border-outline-variant rounded p-3 bg-surface focus:outline-none focus:border-primary resize-none" rows={4} placeholder="Briefly describe the system you need reviewed..."></textarea>
           </div>
-          <button className="bg-primary text-on-primary px-6 py-3 rounded font-label-caps text-label-caps mt-4 hover:opacity-90 transition-opacity">Submit Request</button>
+          <button className="bg-[#556b2f] text-white px-6 py-3 rounded font-label-caps text-label-caps mt-4 hover:opacity-90 transition-opacity">Submit Request</button>
         </form>
       </main>
     </div>

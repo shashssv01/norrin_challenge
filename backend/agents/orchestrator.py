@@ -1,6 +1,7 @@
 from .retrieval import RetrievalAgent
 from .classifier import ClassifierAgent
 from .validator import ValidatorAgent
+import time
 
 class Orchestrator:
     def __init__(self):
@@ -9,13 +10,28 @@ class Orchestrator:
         self.validator = ValidatorAgent()
 
     async def classify_product(self, description: str) -> dict:
+        t0 = time.time()
         context = await self.retrieval.search(description)
+        t_retrieval = (time.time() - t0) * 1000
+        
+        t1 = time.time()
         classification = await self.classifier.classify(description, context)
+        t_classifier = (time.time() - t1) * 1000
+        
+        t2 = time.time()
         validation = await self.validator.validate(description, context, classification)
+        t_validator = (time.time() - t2) * 1000
+        
         return {
             "classification": classification,
             "validation": validation,
             "context_used": context,
+            "metrics": {
+                "retrieval_ms": round(t_retrieval, 2),
+                "classifier_ms": round(t_classifier, 2),
+                "validator_ms": round(t_validator, 2),
+                "orchestrator_total_ms": round(t_retrieval + t_classifier + t_validator, 2)
+            },
             "disclaimer": self._disclaimer()
         }
 

@@ -50,15 +50,21 @@ The distinction is consequential use, not the detection itself.
 Return ONLY valid JSON — no preamble, no explanation outside the JSON:
 {
   "tier": "HIGH_RISK",
-  "confidence_basis": "clear|probable|ambiguous",
-  "rationale": "...",
-  "citations": ["Article 6(2)", "Annex III, point 4(a)"],
-  "obligations": [
-    "Conformity assessment (Article 43)",
-    "Technical documentation (Article 11)",
-    "Human oversight measures (Article 14)"
-  ],
-  "what_would_change_this": "...",
+  "summary": "A concise 1-2 sentence summary of the classification.",
+  "key_facts": {
+    "purpose": "What the system is built to do.",
+    "outputs": "What the system produces or decides."
+  },
+  "risk_clarification": "Detailed explanation of potential risks.",
+  "reasoning_breakdown": {
+    "uploaded_document_facts": ["Fact 1 extracted from documents...", "Fact 2..."],
+    "regulatory_references": ["EU AI Act Article X...", "Annex Y..."],
+    "optional_sources": ["Norrin Guidance section Z..."],
+    "assumptions": ["Assuming the system operates in domain X...", "Assuming human oversight..."],
+    "uncertainties": ["Uncertain if the system processes biometric data..."],
+    "system_reasoning": "How the facts and references logically combine to result in this classification tier."
+  },
+  "what_would_change_this": "Conditions that would alter the tier.",
   "insufficient_context": false,
   "missing_information": []
 }
@@ -113,10 +119,20 @@ If they conflict, the EU AI Act takes precedence.
             # Fallback mock if it fails
             return {
                 "tier": "HIGH_RISK",
-                "confidence_basis": "probable",
-                "rationale": "Fallback mock due to API error.",
-                "citations": ["Error Citation"],
-                "obligations": [],
+                "summary": "Fallback mock due to API error.",
+                "key_facts": {
+                    "purpose": "Unknown",
+                    "outputs": "Unknown"
+                },
+                "risk_clarification": "Error connecting to AI.",
+                "reasoning_breakdown": {
+                    "uploaded_document_facts": [],
+                    "regulatory_references": [],
+                    "optional_sources": [],
+                    "assumptions": ["API is down"],
+                    "uncertainties": ["Everything"],
+                    "system_reasoning": "Fallback triggered."
+                },
                 "what_would_change_this": "Fix the API connection.",
                 "insufficient_context": False,
                 "missing_information": []

@@ -14,7 +14,7 @@ export default function FloatingChat() {
     { id: '1', role: 'assistant', content: 'Hi! I am the EU AI Act assistant. Ask me anything about compliance.' }
   ]);
   const [inputValue, setInputValue] = useState('');
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -41,9 +41,9 @@ export default function FloatingChat() {
     
     try {
       let data;
-      if (selectedFile) {
+      if (selectedFiles.length > 0) {
         const formData = new FormData();
-        formData.append('file', selectedFile);
+        selectedFiles.forEach(file => formData.append('files', file));
         formData.append('question', userMsg.content || 'Analyze this document.');
         
         const res = await fetch('http://localhost:8000/api/chat/upload', {
@@ -65,7 +65,7 @@ export default function FloatingChat() {
           ? { ...msg, content: data.answer || data.detail || 'Analysis complete.', isLoading: false } 
           : msg
       ));
-      setSelectedFile(null);
+      setSelectedFiles([]);
     } catch (e) {
       console.error(e);
       setMessages(prev => prev.map(msg => 
@@ -121,12 +121,16 @@ export default function FloatingChat() {
           
           {/* Input area */}
           <div className="p-3 bg-surface-container-lowest border-t border-outline-variant flex flex-col gap-2">
-            {selectedFile && (
-              <div className="flex items-center justify-between bg-surface-container px-3 py-1 rounded text-body-sm text-secondary">
-                <span className="truncate max-w-[200px]">{selectedFile.name}</span>
-                <button onClick={() => setSelectedFile(null)} className="hover:text-error">
-                  <span className="material-symbols-outlined text-[16px]">close</span>
-                </button>
+            {selectedFiles.length > 0 && (
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                {selectedFiles.map((file, index) => (
+                  <div key={index} className="flex-shrink-0 flex items-center justify-between bg-surface-container px-3 py-1 rounded text-body-sm text-secondary">
+                    <span className="truncate max-w-[120px]">{file.name}</span>
+                    <button onClick={() => setSelectedFiles(prev => prev.filter((_, i) => i !== index))} className="hover:text-error ml-2">
+                      <span className="material-symbols-outlined text-[16px]">close</span>
+                    </button>
+                  </div>
+                ))}
               </div>
             )}
             <div className="flex gap-2 items-center">
@@ -134,7 +138,12 @@ export default function FloatingChat() {
                 type="file" 
                 ref={fileInputRef} 
                 className="hidden" 
-                onChange={(e) => setSelectedFile(e.target.files?.[0] || null)} 
+                multiple
+                onChange={(e) => {
+                  if (e.target.files) {
+                    setSelectedFiles(prev => [...prev, ...Array.from(e.target.files as FileList)]);
+                  }
+                }} 
               />
               <button 
                 onClick={() => fileInputRef.current?.click()}
@@ -154,8 +163,8 @@ export default function FloatingChat() {
               />
             <button 
               onClick={handleSend}
-              disabled={isLoading || (!inputValue.trim() && !selectedFile)}
-              className="bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90 disabled:opacity-50 transition-opacity"
+              disabled={isLoading || (!inputValue.trim() && selectedFiles.length === 0)}
+              className="bg-[#556b2f] text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-90 disabled:opacity-50 transition-opacity"
             >
               <span className="material-symbols-outlined text-[18px]">send</span>
             </button>
@@ -167,7 +176,7 @@ export default function FloatingChat() {
       {/* FAB Button */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform"
+        className="w-14 h-14 bg-[#556b2f] text-white rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform"
       >
         <span className="material-symbols-outlined text-[28px]">
           {isOpen ? 'close' : 'chat_bubble'}

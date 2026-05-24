@@ -8,13 +8,13 @@ export default function DashboardPage() {
         <div className="flex items-center gap-8">
           <span className="font-headline-md text-headline-md font-bold text-primary">Compliance Lens</span>
           <div className="hidden md:flex items-center gap-6">
-            <a className="text-secondary font-body-md text-body-md hover:text-primary transition-colors" href="/">Classify</a>
+            <a className="text-secondary font-body-md text-body-md hover:text-primary transition-colors" href="/classify">Classify</a>
             <a className="text-secondary font-body-md text-body-md hover:text-primary transition-colors" href="/chat">Chat (RAG)</a>
             <a className="text-primary border-b-2 border-primary pb-1 font-bold" href="/dashboard">Delta Dashboard</a>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <a href="/contact" className="bg-primary text-on-primary font-body-sm text-body-sm px-4 py-2 rounded hover:opacity-90 transition-opacity">Book Norrin Review</a>
+          <a href="/contact" className="bg-[#556b2f] text-white font-body-sm text-body-sm px-4 py-2 rounded hover:opacity-90 transition-opacity">Book Norrin Review</a>
         </div>
       </nav>
 
