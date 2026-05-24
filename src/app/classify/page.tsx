@@ -28,13 +28,13 @@ export default function ClassifyPage() {
         selectedFiles.forEach(file => formData.append('files', file));
         formData.append('description', description);
         
-        const res = await fetch('http://localhost:8000/api/classify/upload', {
+        const res = await fetch('/api/classify/upload', {
           method: 'POST',
           body: formData
         });
         data = await res.json();
       } else {
-        const res = await fetch('http://localhost:8000/api/classify', {
+        const res = await fetch('/api/classify', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ description })
@@ -54,7 +54,7 @@ export default function ClassifyPage() {
   const handleExport = async () => {
     if (!result?.session_id) return;
     try {
-      const res = await fetch(`http://localhost:8000/api/export/${result.session_id}`);
+      const res = await fetch(`/api/export/${result.session_id}`);
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');

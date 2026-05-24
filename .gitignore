@@ -1,5 +1,5 @@
 node_modules/
-backend/venv/
+api/venv/
 __pycache__/
 .env
 .next/

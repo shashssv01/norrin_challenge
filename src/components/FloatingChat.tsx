@@ -46,13 +46,13 @@ export default function FloatingChat() {
         selectedFiles.forEach(file => formData.append('files', file));
         formData.append('question', userMsg.content || 'Analyze this document.');
         
-        const res = await fetch('http://localhost:8000/api/chat/upload', {
+        const res = await fetch('/api/chat/upload', {
           method: 'POST',
           body: formData
         });
         data = await res.json();
       } else {
-        const res = await fetch('http://localhost:8000/api/chat', {
+        const res = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ question: userMsg.content })
