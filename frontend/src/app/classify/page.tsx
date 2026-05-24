@@ -1,5 +1,6 @@
 'use client';
 import { useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import FloatingChat from '../../components/FloatingChat';
 
 export default function ClassifyPage() {
@@ -8,8 +9,14 @@ export default function ClassifyPage() {
   const [loading, setLoading] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   const analyzeCompliance = async () => {
+    if (result) {
+      alert("cannot use two usecases on single go");
+      router.push('/');
+      return;
+    }
     setLoading(true);
     try {
       let data;
